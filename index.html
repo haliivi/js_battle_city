@@ -7,7 +7,6 @@
     <title>BATTLE CITY</title>
 </head>
 <body>
-    <!-- 1) Loader -->
     <!-- 2) App  -->
     <!-- 3) Rendering -->
     <script src="engine/Loader.js">
@@ -19,13 +18,11 @@
         loader.addImage('sample', 'static/sample.jpg')
         loader.addJson('persons', 'static/persons.json')
         loader.load(() => {
-            console.log('All loaded')
+            const image = loader.getImage('sample')
+            document.body.append(image)
+            const json = loader.getJson('persons')
+            console.log(json)
         })
-        // Loader
-        // .loadImage('static/sample.jpg')
-        // .then(image => {
-        //     document.body.append(image)
-        // })
     </script>
 </body>
 </html>
