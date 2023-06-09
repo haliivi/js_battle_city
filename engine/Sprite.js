@@ -15,6 +15,27 @@
             this.width = width || this.frame.width
             this.height = height || this.frame.height
         }
+        
+        setScale (value) {
+            this.scaleX = this.scaleY = value
+        }
+
+        get scaleX () {
+            return this.width / this.frame.width
+        }
+
+        set scaleX (value) {
+            this.width = this.frame.width * value
+        }
+
+        get scaleY () {
+            return this.height / this.frame.height
+        }
+
+        set scaleY (value) {
+            this.height = this.frame.height * value
+        }
+
 
         draw (canvas, context) {
             context.drawImage(
