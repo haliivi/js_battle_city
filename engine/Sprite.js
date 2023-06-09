@@ -2,27 +2,29 @@
     'use strict'
     
     class Sprite {
-        constructor (texture) {
+        constructor (texture, {x, y, width, height, frame={}}) {
             this.texture = texture
             this.frame = {
-                x: 0,
-                y: 0,
-                width: texture.width,
-                height: texture.height
+                x: frame.x || 0,
+                y: frame.y || 0,
+                width: frame.width || texture.width,
+                height: frame.height || texture.height,
             }
-            this.x = 0
-            this.y = 0
-            this.width = this.frame.width
-            this.height = this.frame.height
+            this.x = x || 0
+            this.y = y || 0
+            this.width = width || this.frame.width
+            this.height = height || this.frame.height
         }
 
         draw (canvas, context) {
             context.drawImage(
                 this.texture,
+
                 this.frame.x,
                 this.frame.y,
                 this.frame.width,
                 this.frame.height,
+                
                 this.x,
                 this.y,
                 this.width,

@@ -1,5 +1,6 @@
 ;(function () {
     'use strict'
+
     class Container {
         constructor () {
             this.displayObjects = []
@@ -12,8 +13,14 @@
         }
 
         remove () {}
+
+        draw (canvas, context) {
+            for (const displayObject of this.displayObjects) {
+                displayObject.draw(canvas, context)
+            }
+        }
     }
 
     window.GameEngine = window.GameEngine || {};
-    window.GameEngine.Sprite = Sprite;
+    window.GameEngine.Container = Container;
 })();

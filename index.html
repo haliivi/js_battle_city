@@ -7,36 +7,40 @@
     <title>BATTLE CITY</title>
 </head>
 <body>
+    <script src="engine/Container.js"></script>
     <script src="engine/Loader.js"></script>
     <script src="engine/Renderer.js"></script>
     <script src="engine/Sprite.js"></script>
     <script>
         const {Loader, Renderer, Sprite} = GameEngine
+        let sprite = null 
         const loader = new Loader
         const renderer = new Renderer({
             width: 400,
             height: 400,
             background: 'gray',
-            // update (timestamp) {
-            //     renderer.draw((canvas, context) => {
-            //         context.fillStyle = 'black'
-            //         context.beginPath()
-            //         context.arc(
-            //             canvas.width / 2 + 100 * Math.cos(timestamp / 200),
-            //             canvas.height / 2 + 100 * Math.sin(timestamp / 200),
-            //             10,
-            //             0,
-            //             Math.PI * 2
-            //         )
-            //         context.fill()
-            //     })
-            // }
+            update (timestamp) {
+                if (!sprite) {
+                    return
+                }
+
+                // sprite.frame.x = sprite.texture.width / 2 + 100 * Math.cos(timestamp / 100)
+                // sprite.frame.y = sprite.texture.height / 2 + 100 * Math.sin(timestamp / 100)
+                // sprite.x = renderer.canvas.width / 2 + 100 * Math.cos(timestamp / 100)
+                // sprite.y = renderer.canvas.height / 2 + 100 * Math.sin(timestamp / 100)
+            }
         })
         document.body.append(renderer.canvas)
         loader.addImage('sample', 'static/sample.jpg')
         loader.addJson('persons', 'static/persons.json')
         loader.load(() => {
-            const sprite = new Sprite(loader.getImage('sample'))
+            sprite = new Sprite(loader.getImage('sample'), {
+                x: 0,
+                y: 0,
+                width: 100,
+                height: 100,
+            })
+            renderer.stage.add(sprite)
         })
     </script>
 </body>
