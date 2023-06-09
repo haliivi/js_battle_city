@@ -7,21 +7,36 @@
     <title>BATTLE CITY</title>
 </head>
 <body>
-    <!-- 2) App  -->
-    <!-- 3) Rendering -->
-    <script src="engine/Loader.js">
-
-    </script>
+    <script src="engine/Loader.js"></script>
+    <script src="engine/Renderer.js"></script>
+    <script src="engine/Sprite.js"></script>
     <script>
-        const {Loader} = GameEngine
+        const {Loader, Renderer, Sprite} = GameEngine
         const loader = new Loader
+        const renderer = new Renderer({
+            width: 400,
+            height: 400,
+            background: 'gray',
+            // update (timestamp) {
+            //     renderer.draw((canvas, context) => {
+            //         context.fillStyle = 'black'
+            //         context.beginPath()
+            //         context.arc(
+            //             canvas.width / 2 + 100 * Math.cos(timestamp / 200),
+            //             canvas.height / 2 + 100 * Math.sin(timestamp / 200),
+            //             10,
+            //             0,
+            //             Math.PI * 2
+            //         )
+            //         context.fill()
+            //     })
+            // }
+        })
+        document.body.append(renderer.canvas)
         loader.addImage('sample', 'static/sample.jpg')
         loader.addJson('persons', 'static/persons.json')
         loader.load(() => {
-            const image = loader.getImage('sample')
-            document.body.append(image)
-            const json = loader.getJson('persons')
-            console.log(json)
+            const sprite = new Sprite(loader.getImage('sample'))
         })
     </script>
 </body>
