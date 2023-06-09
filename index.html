@@ -12,7 +12,7 @@
     <script src="engine/Renderer.js"></script>
     <script src="engine/Sprite.js"></script>
     <script>
-        const {Loader, Renderer, Sprite} = GameEngine
+        const {Loader, Renderer, Sprite, Container} = GameEngine
         let sprite = null 
         const loader = new Loader
         const renderer = new Renderer({
@@ -42,6 +42,9 @@
                 anchorX: 0.5,
                 anchorY: 0.5,
             })
+            const container = new Container()
+            renderer.stage.add(container)
+            container.add(sprite)
             renderer.stage.add(sprite)
             sprite.absoluteX = sprite.absoluteY = 0
         })
