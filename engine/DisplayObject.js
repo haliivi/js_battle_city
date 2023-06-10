@@ -12,6 +12,7 @@
             this.anchorX = anchorX
             this.anchorY = anchorY
             this.parent = null
+            this.visible = true
             !scale || this.setScale(scale)
         }
         setParent (parent) {
@@ -44,9 +45,13 @@
             this.scaleX = this.scaleY = value
         }
 
-        draw () {}
+        draw (callback) {
+            if (this.visible) {
+                callback()
+            }
+        }
     }
-    
+
     window.GameEngine = window.GameEngine || {};
     window.GameEngine.DisplayObject = DisplayObject;
 })();
