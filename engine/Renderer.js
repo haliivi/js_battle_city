@@ -7,7 +7,7 @@
             this.canvas.width = args.width || 50
             this.canvas.height = args.height || 50
             this.update = args.update || (() => {})
-            this.background = args.background || 'white'
+            this.background = args.background || 'black'
             this.stage = new GameEngine.Container()
             requestAnimationFrame(timestamp => this.tick(timestamp))
         }

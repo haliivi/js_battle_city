@@ -15,7 +15,7 @@
     <script src="engine/Scene.js"></script>
     <script src="engine/Game.js"></script>
     <script>
-        const {Loader, Renderer, Sprite, Container} = GameEngine
+        const {Loader, Renderer, Sprite, Container, Game, Scene} = GameEngine
         let sprite1 = null,
             sprite2 = null,
             container = null
@@ -70,6 +70,20 @@
             renderer.stage.add(container)
             container.add(sprite1)
             container.add(sprite2)
+        })
+        const mainScene = new Scene ({
+            loading () {},
+
+            init () {},
+
+            update () {},
+        })
+
+        const game = new Game ({
+            el: document.body,
+            width: 400,
+            height: 400,
+            scenes: [],
         })
     </script>
 </body>
