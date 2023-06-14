@@ -3,10 +3,52 @@
 
     class Game {
         constructor (args = {}) {
-            const {el, width, height} = args
+            const {el, width, height, scenes=[]} = args
             this.renderer = new GameEngine.Renderer(args)
+            this.loader = new GameEngine.Loader()
+            this.scenesCollection = new GameEngine.Container()
+            this.addScene(scenes)
             if (el && el.appendChild) {
                 el.appendChild(this.renderer.canvas)
+            }
+            const autoStartedScenes = scenes.filter(x => x.autoStart)
+            for (const scene of autoStartedScenes) {
+                scene.status = 'loading'
+                scene.loading(this.loader
+            )}
+            this.loader.load(() => {
+                for (const scene of autoStartedScenes) {
+                    scene.status = 'init'
+                    scene.init()
+                }
+                for (const scene of autoStartedScenes) {
+                    scene.status = 'started'
+                }
+            })
+            requestAnimationFrame(timestamp => this.tick(timestamp))
+        }
+
+        get scenes () {
+            return this.scenesCollection.displayObjects
+        }
+
+        tick(timestamp) {
+            // this.renderer.render()
+            for (const scene of this.scenes) {
+                if (scene.status === 'started') {
+                    scene.update(timestamp)
+                }
+            }
+            this.renderer.clear()
+            requestAnimationFrame(timestamp => this.tick(timestamp))
+        }
+
+        addScene(scenes) {
+            this.scenesCollection.add(...scenes)
+            for (const scene of scenes) {
+                console.log(this.parent)
+                scene.setParent = this
+                console.log(scene)
             }
         }
     }

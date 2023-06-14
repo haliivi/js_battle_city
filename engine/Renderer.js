@@ -8,34 +8,28 @@
             this.canvas.height = args.height || 50
             this.update = args.update || (() => {})
             this.background = args.background || 'black'
-            this.stage = new GameEngine.Container()
-            requestAnimationFrame(timestamp => this.tick(timestamp))
+            
         }
         
-        get displayObjects () {
-            return getDisplayObjects(this.stage)
-            function getDisplayObjects (container, result = []) {
-                for (const displayObject of container.displayObjects) {
-                    if (displayObject instanceof GameEngine.Container) {
-                        getDisplayObjects(displayObject, result)
-                    } else {
-                        result.push(displayObject)
-                    }
-                }
-                return result
-            }
-        }
+        // get displayObjects () {
+        //     return getDisplayObjects(this.stage)
+        //     function getDisplayObjects (container, result = []) {
+        //         for (const displayObject of container.displayObjects) {
+        //             if (displayObject instanceof GameEngine.Container) {
+        //                 getDisplayObjects(displayObject, result)
+        //             } else {
+        //                 result.push(displayObject)
+        //             }
+        //         }
+        //         return result
+        //     }
+        // }
 
-        tick(timestamp) {
-            this.update(timestamp)
-            this.clear()
-            this.render()
-            requestAnimationFrame(timestamp => this.tick(timestamp))
-        }
 
-        render () {
-            this.stage.draw(this.canvas, this.context)
-        }
+
+        // render () {
+        //     this.stage.draw(this.canvas, this.context)
+        // }
 
         clear () {
             this.context.fillStyle = this.background
