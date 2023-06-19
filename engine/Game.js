@@ -7,6 +7,7 @@
             this.renderer = new GameEngine.Renderer(args)
             this.loader = new GameEngine.Loader()
             this.scenesCollection = new GameEngine.Container()
+            this.keyboard = new GameEngine.Keyboard()
             this.addScene(...scenes)
             if (el && el.appendChild) {
                 el.appendChild(this.renderer.canvas)
