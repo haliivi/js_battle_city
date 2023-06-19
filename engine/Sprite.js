@@ -20,10 +20,9 @@
                 context.translate(this.x, this.y)
                 context.rotate(this.rotation)
                 context.scale(this.scaleX, this.scaleY)
-    
                 context.drawImage(
                     this.texture,
-    
+                    
                     this.frame.x,
                     this.frame.y,
                     this.frame.width,

@@ -7,7 +7,7 @@
             this.renderer = new GameEngine.Renderer(args)
             this.loader = new GameEngine.Loader()
             this.scenesCollection = new GameEngine.Container()
-            this.addScene(scenes)
+            this.addScene(...scenes)
             if (el && el.appendChild) {
                 el.appendChild(this.renderer.canvas)
             }
@@ -33,22 +33,21 @@
         }
 
         tick(timestamp) {
-            // this.renderer.render()
-            for (const scene of this.scenes) {
-                if (scene.status === 'started') {
-                    scene.update(timestamp)
-                }
+            const startedScenes = this.scenes.filter(x => x.status === 'started')
+            for (const scene of startedScenes) {
+                scene.update(timestamp)
             }
             this.renderer.clear()
+            for (const scene of startedScenes) {
+                scene.draw(this.renderer.canvas, this.renderer.context)
+            }
             requestAnimationFrame(timestamp => this.tick(timestamp))
         }
 
-        addScene(scenes) {
+        addScene(...scenes) {
             this.scenesCollection.add(...scenes)
             for (const scene of scenes) {
-                console.log(this.parent)
-                scene.setParent = this
-                console.log(scene)
+                scene.parent = this
             }
         }
     }
