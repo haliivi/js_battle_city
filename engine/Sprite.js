@@ -33,10 +33,6 @@
                     this.width,
                     this.height,
                 )
-                context.beginPath()
-                context.fillStyle = 'red'
-                context.arc(0, 0, 5, 0, Math.PI * 2)
-                context.fill()
                 context.restore()
             })
         }

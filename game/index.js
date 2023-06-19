@@ -1,4 +1,4 @@
-const {Sprite, Game, Scene} = GameEngine
+const {Sprite, Game, Scene, Point} = GameEngine
 const mainScene = new Scene ({
     loading (loader) {
         loader.addImage('sample', 'static/sample.jpg')
@@ -19,7 +19,11 @@ const mainScene = new Scene ({
                 y: this.parent.renderer.canvas.height / 2,
             }
         )
-        this.add(this.sprite)
+        this.point = new Point({
+            x: this.sprite.x,
+            y: this.sprite.y,
+        })
+        this.add(this.sprite, this.point)
     },
 
     update (timestamp) {
