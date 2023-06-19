@@ -8,8 +8,11 @@
                 autoStart=true,
                 loading,
                 init,
-                update} = args
+                update,
+                name='mainScene'
+            } = args
             this.autoStart = autoStart
+            this.name = name
             this.status = 'waiting'
             this.stage = this.displayObjects
             this.game = null

@@ -9,7 +9,7 @@
         draw (canvas, context) {
             super.draw(() => {
                 context.beginPath()
-                context.fillStyle = 'red'
+                context.fillStyle = this.color
                 context.arc(this.x, this.y, 3, 0, Math.PI * 2)
                 context.fill()
             })
