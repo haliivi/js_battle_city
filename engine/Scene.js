@@ -9,7 +9,7 @@
                 loading,
                 init,
                 update,
-                name='mainScene'
+                name='mainScene',
             } = args
             this.autoStart = autoStart
             this.name = name
@@ -26,6 +26,12 @@
         init () {}
 
         update () {}
+
+        beforeDestroy () {
+            for (const key of Object.keys(this)) {
+                delete this[key]
+            }
+        }
     }
 
     window.GameEngine = window.GameEngine || {};

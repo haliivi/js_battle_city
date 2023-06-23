@@ -9,7 +9,6 @@
             this.x2 = x2
             this.y2 = y2
             this.color = color
-            
         }
         draw (canvas, context) {
             super.draw(() => {

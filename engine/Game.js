@@ -15,8 +15,8 @@
             const autoStartedScenes = scenes.filter(x => x.autoStart)
             for (const scene of autoStartedScenes) {
                 scene.status = 'loading'
-                scene.loading(this.loader
-            )}
+                scene.loading(this.loader)
+            }
             this.loader.load(() => {
                 for (const scene of autoStartedScenes) {
                     scene.status = 'init'
@@ -33,7 +33,7 @@
             return this.scenesCollection.displayObjects
         }
 
-        tick(timestamp) {
+        tick (timestamp) {
             const startedScenes = this.scenes.filter(x => x.status === 'started')
             for (const scene of startedScenes) {
                 scene.update(timestamp)
@@ -45,11 +45,47 @@
             requestAnimationFrame(timestamp => this.tick(timestamp))
         }
 
-        addScene(...scenes) {
+        addScene (...scenes) {
             this.scenesCollection.add(...scenes)
             for (const scene of scenes) {
                 scene.parent = this
             }
+        }
+
+        getScene (name) {
+            if (name instanceof GameEngine.Scene) {
+                if (this.scenes.includes(name)) {
+                    return name
+                }
+            }
+            if (typeof(name) === 'string') {
+                for (const sceneItem of this.scenes) {
+                    if (sceneItem.name === name) {
+                        return sceneItem
+                    }
+                }
+            }
+        }
+
+        startScene (name) {
+            const scene = this.getScene(name)
+            if (!scene) {return false}
+            scene.status = 'loading'
+            scene.loading(this.loader)
+            this.loader.load(() => {
+                scene.status = 'init'
+                scene.init()
+                scene.status = 'started'
+            })
+            return true
+        } 
+
+        finishScene (name) {
+            const scene = this.getScene(name)
+            if (!scene) {return false}
+            scene.status = 'finished'
+            this.scenesCollection.remove(scene)
+            scene.beforeDestroy()
         }
     }
 

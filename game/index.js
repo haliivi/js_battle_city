@@ -1,14 +1,15 @@
 const {Sprite, Game, Scene, Point, Line, Container} = GameEngine
 const mainScene = new Scene ({
+    autoStart: false,
     loading (loader) {
         loader.addImage('sample', 'static/sample.jpg')
         loader.addJson('persons', 'static/persons.json')
     },
 
     init (loader) {
-        const bunnyTexture = this.parent.loader.getImage('sample')
+        const sampleTexture = this.parent.loader.getImage('sample')
         this.sprite = new Sprite(
-            bunnyTexture,
+            sampleTexture,
             {
                 scale: 0.5,
                 width: 100,
