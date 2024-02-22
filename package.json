@@ -1,0 +1,22 @@
+{
+  "name": "js_battle_city",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haliivi/js_battle_city.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haliivi/js_battle_city/issues"
+  },
+  "homepage": "https://github.com/haliivi/js_battle_city#readme",
+  "dependencies": {
+    "prettier": "^3.2.5"
+  }
+}
