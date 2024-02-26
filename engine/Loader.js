@@ -8,8 +8,8 @@
                 jsons: [],
             };
             this.resources = {
-                images: [],
-                jsons: [],
+                images: {},
+                jsons: {},
             };
         }
 
@@ -27,7 +27,7 @@
             this.loadOrder.images.forEach((imageData) => {
                 const { name, src } = imageData;
                 const promise = Loader.loadImage(src).then((image) => {
-                    this.resources.images.push({ name, image });
+                    this.resources.images[name] = image;
                     if (this.loadOrder.images.includes(imageData)) {
                         const index = this.loadOrder.images.indexOf(imageData);
                         this.loadOrder.images.splice(index, 1);
@@ -39,7 +39,7 @@
             this.loadOrder.jsons.forEach((jsonData) => {
                 const { name, address } = jsonData;
                 const promise = Loader.loadJSON(address).then((json) => {
-                    this.resources.jsons.push({ name, json });
+                    this.resources.jsons[name] = json;
                     if (this.loadOrder.jsons.includes(jsonData)) {
                         const index = this.loadOrder.jsons.indexOf(jsonData);
                         this.loadOrder.jsons.splice(index, 1);
@@ -70,6 +70,14 @@
                     .then((json) => resolve(json))
                     .catch((err) => reject(err));
             });
+        }
+
+        getImage(name) {
+            return this.resources.images[name];
+        }
+
+        getJSON(name) {
+            return this.resources.jsons[name];
         }
     }
 

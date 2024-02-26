@@ -10,13 +10,47 @@
         <!-- 2) Game -->
         <!-- 3) Rendering -->
         <script src="./engine/Loader.js"></script>
+        <script src="./engine/Renderer.js"></script>
+        <script src="./engine/Sprite.js"></script>
+        <script src="./engine/Container.js"></script>
+
         <script>
-            const { Loader } = GameEngine;
+            const { Loader, Renderer, Sprite, Container } = GameEngine;
+
             const loader = new Loader();
+            const renderer = new Renderer({
+                width: 500,
+                height: 500,
+                background: 'gray',
+
+                // update(timestamp) {
+                //     renderer.draw((canvas, context) => {
+                //         context.fillStyle = 'red';
+                //         context.beginPath();
+                //         context.arc(
+                //             canvas.width / 2 + 100 * Math.cos(timestamp / 100),
+                //             canvas.height / 2 + 100 * Math.sin(timestamp / 100),
+                //             10,
+                //             0,
+                //             Math.PI * 2,
+                //         );
+                //         context.fill();
+                //     });
+                // },
+            });
+
+            document.body.append(renderer.canvas);
+
             loader.addImage('tank', './static/TANK.jpg');
             loader.addJSON('persons', './static/persons.json');
+
             loader.load(() => {
-                console.log('Images loaded');
+                const sprite = new Sprite(loader.getImage('tank'));
+                renderer.stage.add(sprite);
+                sprite.x = 100;
+                sprite.y = 200;
+                sprite.width = 100;
+                sprite.height = 100;
             });
         </script>
     </body>
