@@ -76,7 +76,15 @@
                 container.add(sprite2);
             });
 
-            const game = new Game()
+            const mainScene = new Scene({
+                loading() {},
+                init() {},
+                update() {},
+            });
+
+            const game = new Game({
+                scenes: [mainScene],
+            });
         </script>
     </body>
 </html>

@@ -2,7 +2,16 @@
     'use strict';
 
     class Scene {
-        constructor() {
+        constructor({
+            autoStart = true,
+            loading = () => {console.log(this)},
+            init = () => {},
+            update = () => {},
+        }) {
+            this.autoStart = autoStart;
+            this.loading = loading.bind(this);
+            this.init = init;
+            this.update = update
             console.log('Scene');
         }
     }
