@@ -8,12 +8,14 @@
     <body>
         <script src="./engine/Loader.js"></script>
         <script src="./engine/Renderer.js"></script>
+        <script src="./engine/DisplayObject.js"></script>
         <script src="./engine/Sprite.js"></script>
         <script src="./engine/Container.js"></script>
 
         <script>
-            const { Loader, Renderer, Sprite, Container } = GameEngine;
-            let sprite;
+            const { Loader, Renderer, Sprite, Container, DisplayObject } =
+                GameEngine;
+            let sprite1, sprite2, container;
 
             const loader = new Loader();
             const renderer = new Renderer({
@@ -22,9 +24,11 @@
                 background: 'gray',
 
                 update(timestamp) {
-                    if (!sprite) {
-                        return;
+                    if (!container) {
+                        return
                     }
+                    container.rotation = timestamp / 1000
+                    sprite1.rotation = timestamp / 100
                 },
             });
 
@@ -34,19 +38,33 @@
             loader.addJSON('persons', './static/persons.json');
 
             loader.load(() => {
-                sprite = new Sprite(loader.getImage('tank'), {
+                sprite1 = new Sprite(loader.getImage('tank'), {
+                    textureSettings: {
+                        x: renderer.canvas.width / 2,
+                        y: renderer.canvas.height / 2,
+                    },
+                    rotation: Math.PI / 4,
+                    scale: 0.25,
                     anchorX: 0.5,
                     anchorY: 0.5,
-                    scale: 0.25,
                 });
 
-                const container = new Container();
-                renderer.stage.add(container)
-                container.add(sprite)
+                sprite2 = new Sprite(loader.getImage('tank'), {
+                    textureSettings: {
+                        x: renderer.canvas.width / 3,
+                        y: renderer.canvas.height / 3,
+                    },
+                    scale: 0.25,
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                });
 
-                renderer.stage.add(sprite);
-                sprite.absoluteX = 0;
-                sprite.absoluteY = 0;
+                container = new Container()
+                container.rotation = Math.PI / 4
+
+                renderer.stage.add(container);
+                container.add(sprite1)
+                container.add(sprite2)
             });
         </script>
     </body>
