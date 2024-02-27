@@ -1,18 +1,21 @@
 (function () {
     'use strict';
 
-    class Scene {
+    class Scene extends GameEngine.Container {
         constructor({
             autoStart = true,
-            loading = () => {console.log(this)},
+            loading = () => {},
             init = () => {},
             update = () => {},
         }) {
+            super();
+            this.stage = this.displayObjects;
+            this.status = 'waiting';
+            this.game = null;
             this.autoStart = autoStart;
-            this.loading = loading.bind(this);
+            this.loading = loading;
             this.init = init;
-            this.update = update
-            console.log('Scene');
+            this.update = update;
         }
     }
 
