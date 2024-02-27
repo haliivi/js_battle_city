@@ -2,7 +2,7 @@
     'use strict';
 
     class Renderer {
-        constructor({ width = 50, height = 50, background = 'balck', update }) {
+        constructor({ width = 500, height = 500, background = 'balck', update }={}) {
             this.canvas = document.createElement('canvas');
             this.context = this.canvas.getContext('2d');
 
