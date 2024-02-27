@@ -34,6 +34,20 @@
             this.context.rect(0, 0, this.canvas.width, this.canvas.height);
             this.context.fill();
         }
+
+        get displayObjects() {
+            return _getDisplayObjects(this.stage);
+            function _getDisplayObjects(container, result = []) {
+                container.displayObjects.forEach((displayObject) => {
+                    if (displayObject instanceof GameEngine.Container) {
+                        _getDisplayObjects(displayObject, result);
+                    } else {
+                        result.push(displayObject);
+                    }
+                });
+                return result;
+            }
+        }
     }
 
     window.GameEngine = window.GameEngine || {};
