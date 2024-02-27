@@ -11,10 +11,19 @@
         <script src="./engine/DisplayObject.js"></script>
         <script src="./engine/Sprite.js"></script>
         <script src="./engine/Container.js"></script>
+        <script src="./engine/Game.js"></script>
+        <script src="./engine/Scene.js"></script>
 
         <script>
-            const { Loader, Renderer, Sprite, Container, DisplayObject } =
-                GameEngine;
+            const {
+                Loader,
+                Renderer,
+                Sprite,
+                Container,
+                DisplayObject,
+                Game,
+                Scene,
+            } = GameEngine;
             let sprite1, sprite2, container;
 
             const loader = new Loader();
@@ -25,10 +34,10 @@
 
                 update(timestamp) {
                     if (!container) {
-                        return
+                        return;
                     }
-                    container.rotation = timestamp / 1000
-                    sprite1.rotation = timestamp / 100
+                    container.rotation = timestamp / 1000;
+                    sprite1.rotation = timestamp / 100;
                 },
             });
 
@@ -59,12 +68,12 @@
                     anchorY: 0.5,
                 });
 
-                container = new Container()
-                container.rotation = Math.PI / 4
+                container = new Container();
+                container.rotation = Math.PI / 4;
 
                 renderer.stage.add(container);
-                container.add(sprite1)
-                container.add(sprite2)
+                container.add(sprite1);
+                container.add(sprite2);
             });
         </script>
     </body>
