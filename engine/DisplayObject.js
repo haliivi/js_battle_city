@@ -10,6 +10,7 @@
             scaleX = 1,
             scaleY = 1,
             scale = 1,
+            visible = true,
         } = {}) {
             this.width = textureSettings.width;
             this.height = textureSettings.height;
@@ -21,6 +22,7 @@
             this.scaleX = scaleX;
             this.scaleY = scaleY;
             this.parent = null;
+            this.visible = visible;
             scale !== 1 && this.setScale(scale);
         }
 
@@ -53,11 +55,13 @@
             }
             if (parent) {
                 parent.add(this);
-                this.parent = parent
+                this.parent = parent;
             }
         }
 
-        draw() {}
+        draw(callback) {
+            this.visible && callback()
+        }
     }
 
     window.GameEngine = window.GameEngine || {};

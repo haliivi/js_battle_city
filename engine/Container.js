@@ -23,14 +23,16 @@
         }
 
         draw(canvas, context) {
-            context.save();
-            context.translate(this.x, this.y);
-            context.rotate(-this.rotation);
-            context.scale(this.scaleX, this.scaleY);
-            this.displayObjects.forEach((displayObject) =>
-                displayObject.draw(canvas, context),
-            );
-            context.restore();
+            super.draw(() => {
+                context.save();
+                context.translate(this.x, this.y);
+                context.rotate(-this.rotation);
+                context.scale(this.scaleX, this.scaleY);
+                this.displayObjects.forEach((displayObject) =>
+                    displayObject.draw(canvas, context),
+                );
+                context.restore();
+            });
         }
     }
 
