@@ -4,9 +4,11 @@
     class Scene extends GameEngine.Container {
         constructor({
             autoStart = true,
+            name = '',
             loading = () => {},
             init = () => {},
             update = () => {},
+            beforeDestroy = () => {},
         }) {
             super();
             this.stage = this.displayObjects;
@@ -16,6 +18,12 @@
             this.loading = loading;
             this.init = init;
             this.update = update;
+            this.beforeDestroy = beforeDestroy;
+            this.name = name;
+        }
+
+        beforeDestroy() {
+            Object.keys(this).forEach((key) => delete this[key]);
         }
     }
 

@@ -23,8 +23,8 @@ const mainScene = new Scene({
         this.add(this.tank);
     },
     update(timestamp) {
-        const { keyboard } = this.parent;
-        const { arrowUp, arrowDown, arrowLeft, arrowRight, space } = keyboard;
+        const { arrowUp, arrowDown, arrowLeft, arrowRight } =
+            this.parent.keyboard.keys;
         arrowUp && this.tank.y--;
         arrowDown && this.tank.y++;
         arrowLeft && this.tank.x--;
