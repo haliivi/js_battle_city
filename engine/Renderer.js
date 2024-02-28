@@ -2,14 +2,19 @@
     'use strict';
 
     class Renderer {
-        constructor({ width = 500, height = 500, background = 'balck', update }={}) {
+        constructor({
+            width = 500,
+            height = 500,
+            background = 'balck',
+            update,
+        } = {}) {
             this.canvas = document.createElement('canvas');
             this.context = this.canvas.getContext('2d');
             this.canvas.width = width;
             this.canvas.height = height;
             this.background = background;
         }
-        
+
         clear() {
             this.context.fillStyle = this.background;
             this.context.beginPath();

@@ -16,7 +16,8 @@
             const registeredEvents = ['keydown', 'keyup'];
             registeredEvents.forEach((registeredEvent) => {
                 document.body.addEventListener(registeredEvent, (e) => {
-                    const keyCode = e.code.charAt(0).toLowerCase() + e.code.slice(1)
+                    const keyCode =
+                        e.code.charAt(0).toLowerCase() + e.code.slice(1);
                     if (keyCode in this.keys) {
                         this.keys[keyCode] =
                             registeredEvent === registeredEvents[1]

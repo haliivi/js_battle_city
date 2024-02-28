@@ -4,8 +4,8 @@
     class Game {
         constructor({
             el = document.body,
-            width = 500,
-            height = 500,
+            width = 400,
+            height = 400,
             background = 'green',
             scenes = [],
         } = {}) {

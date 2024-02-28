@@ -14,8 +14,19 @@
                 visible = true,
             } = {},
         ) {
-            super({ textureSettings, anchorX, anchorY, scale, rotation, visible });
+            super({
+                textureSettings,
+                anchorX,
+                anchorY,
+                scale,
+                rotation,
+                visible,
+            });
             this.texture = texture;
+            this.velocity = {
+                x: 0,
+                y: 0,
+            };
             this.frame = {
                 x: frameSettings.x || 0,
                 y: frameSettings.y || 0,

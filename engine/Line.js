@@ -15,7 +15,7 @@
             super.draw(() => {
                 context.beginPath();
                 context.strokeStyle = this.color;
-                context.lineWidth = 2
+                context.lineWidth = 2;
                 context.moveTo(this.x1, this.y1);
                 context.lineTo(this.x2, this.y2);
                 context.stroke();

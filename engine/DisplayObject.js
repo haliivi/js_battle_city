@@ -60,7 +60,7 @@
         }
 
         draw(callback) {
-            this.visible && callback()
+            this.visible && callback();
         }
     }
 
