@@ -13,84 +13,11 @@
         <script src="./engine/Container.js"></script>
         <script src="./engine/Game.js"></script>
         <script src="./engine/Scene.js"></script>
-
-        <script>
-            const {
-                Loader,
-                Renderer,
-                Sprite,
-                Container,
-                DisplayObject,
-                Game,
-                Scene,
-            } = GameEngine;
-            // let sprite1, sprite2, container;
-
-            // const loader = new Loader();
-            // const renderer = new Renderer({
-            //     width: 500,
-            //     height: 500,
-            //     background: 'gray',
-
-            //     update(timestamp) {
-            //         if (!container) {
-            //             return;
-            //         }
-            //         container.rotation = timestamp / 1000;
-            //         sprite1.rotation = timestamp / 100;
-            //     },
-            // });
-
-            // document.body.append(renderer.canvas);
-
-            // loader.addImage('tank', './static/TANK.jpg');
-            // loader.addJSON('persons', './static/persons.json');
-
-            // loader.load(() => {
-            //     sprite1 = new Sprite(loader.getImage('tank'), {
-            //         textureSettings: {
-            //             x: renderer.canvas.width / 2,
-            //             y: renderer.canvas.height / 2,
-            //         },
-            //         rotation: Math.PI / 4,
-            //         scale: 0.25,
-            //         anchorX: 0.5,
-            //         anchorY: 0.5,
-            //     });
-
-            //     sprite2 = new Sprite(loader.getImage('tank'), {
-            //         textureSettings: {
-            //             x: renderer.canvas.width / 3,
-            //             y: renderer.canvas.height / 3,
-            //         },
-            //         scale: 0.25,
-            //         anchorX: 0.5,
-            //         anchorY: 0.5,
-            //     });
-
-            //     container = new Container();
-            //     container.rotation = Math.PI / 4;
-
-            //     renderer.stage.add(container);
-            //     container.add(sprite1);
-            //     container.add(sprite2);
-            // });
-
-            const mainScene = new Scene({
-                loading(loader) {
-                    console.log('loading')
-                },
-                init() {
-                    console.log('init')
-                },
-                update() {
-                    console.log('update')
-                },
-            });
-
-            const game = new Game({
-                scenes: [mainScene],
-            });
-        </script>
+        <script src="./engine/Mouse.js"></script>
+        <script src="./engine/Keyboard.js"></script>
+        <script src="./engine/Point.js"></script>
+        <script src="./engine/Line.js"></script>
+        <script src="./engine/Body.js"></script>
+        <script src="./game/index.js"></script>
     </body>
 </html>
