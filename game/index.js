@@ -5,10 +5,13 @@ const mainScene = new Scene({
     autoStart: true,
     loading(loader) {
         loader.addImage('tank', './static/TANK.jpg');
+        loader.addImage('man', './static/man.png');
         loader.addJSON('persons', './static/persons.json');
+        loader.addJSON('manAtlas', './static/manAtlas.json');
     },
     init() {
         const tankTexture = this.parent.loader.getImage('tank');
+        const manTexture = this.parent.loader.getImage('man');
 
         this.tank = new Body(tankTexture, {
             textureSettings: {
@@ -20,15 +23,27 @@ const mainScene = new Scene({
             anchorY: 0.5,
             debug: true,
         });
+
+        this.man = new Body(manTexture, {
+            textureSettings: {
+                x: 10,
+                y: 20,
+            },
+            scale: 0.1,
+        })
+
         this.add(this.tank);
+        this.add(this.man)
     },
     update(timestamp) {
         const { arrowUp, arrowDown, arrowLeft, arrowRight } =
             this.parent.keyboard.keys;
-        arrowUp && this.tank.y--;
-        arrowDown && this.tank.y++;
-        arrowLeft && this.tank.x--;
-        arrowRight && this.tank.x++;
+        this.tank.velocity.x = 0;
+        this.tank.velocity.y = 0;
+        arrowUp && this.tank.velocity.y--;
+        arrowDown && this.tank.velocity.y++;
+        arrowLeft && this.tank.velocity.x--;
+        arrowRight && this.tank.velocity.x++;
     },
 });
 

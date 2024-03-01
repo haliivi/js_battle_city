@@ -12,6 +12,7 @@
                 scale = 1,
                 rotation = 0,
                 visible = true,
+                velocity = { x: 0, y: 0 },
             } = {},
         ) {
             super({
@@ -23,10 +24,7 @@
                 visible,
             });
             this.texture = texture;
-            this.velocity = {
-                x: 0,
-                y: 0,
-            };
+            this.velocity = { x: velocity.x || 0, y: velocity.y ||0 };
             this.frame = {
                 x: frameSettings.x || 0,
                 y: frameSettings.y || 0,
@@ -35,6 +33,11 @@
             };
             this.width = this.width || this.frame.width;
             this.height = this.height || this.frame.height;
+        }
+
+        tick(timestamp) {
+            this.x += this.velocity.x;
+            this.y += this.velocity.y;
         }
 
         draw(canvas, context) {

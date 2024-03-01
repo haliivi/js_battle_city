@@ -26,6 +26,14 @@
             });
         }
 
+        tick(timestamp) {
+            this.displayObjects.forEach((displayObject) => {
+                if (displayObject.tick) {
+                    displayObject.tick(timestamp);
+                }
+            });
+        }
+
         draw(canvas, context) {
             super.draw(() => {
                 context.save();

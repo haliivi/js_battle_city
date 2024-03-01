@@ -52,6 +52,7 @@
                 (scene) => scene.status === 'started',
             );
             startedScenes.forEach((scene) => scene.update(timestamp));
+            startedScenes.forEach((scene) => scene.tick(timestamp));
             this.renderer.clear();
             startedScenes.forEach((scene) =>
                 scene.draw(this.renderer.canvas, this.renderer.context),
