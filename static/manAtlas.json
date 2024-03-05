@@ -1,11 +1,43 @@
 {
+    "actions": {
+        "moveDown": {
+            "duration": 200,
+            "frames": [
+                ["man", "down", "frame1"],
+                ["man", "down", "frame2"],
+                ["man", "down", "frame3"],
+                ["man", "down", "frame4"]
+            ]
+        }
+    },
     "frames": [
         {
-            "keys": [],
-            "x": 0,
-            "y": 0,
-            "width": 0,
-            "height": 0
+            "keys": ["man", "down", "frame1"],
+            "x": 6,
+            "y": 22,
+            "width": 78,
+            "height": 100
+        },
+        {
+            "keys": ["man", "down", "frame2"],
+            "x": 99,
+            "y": 22,
+            "width": 78,
+            "height": 100
+        },
+        {
+            "keys": ["man", "down", "frame3"],
+            "x": 181,
+            "y": 22,
+            "width": 78,
+            "height": 100
+        },
+        {
+            "keys": ["man", "down", "frame4"],
+            "x": 268,
+            "y": 22,
+            "width": 78,
+            "height": 100
         }
     ]
 }

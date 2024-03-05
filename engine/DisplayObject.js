@@ -12,6 +12,7 @@
             scale = 1,
             visible = true,
         } = {}) {
+            this.uid = GameEngine.Util.generateUID();
             this.width = textureSettings.width;
             this.height = textureSettings.height;
             this.x = textureSettings.x || 0;
