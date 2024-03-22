@@ -1,5 +1,11 @@
 {
     "actions": {
+        "stayDown": {
+            "frames": [["man", "down", "frame1"]]
+        },
+        "stayUp": {
+            "frames": [["man", "up", "frame1"]]
+        },
         "moveDown": {
             "duration": 800,
             "frames": [

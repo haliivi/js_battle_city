@@ -31,7 +31,7 @@ const mainScene = new Scene({
         });
         this.man.setFramesCollection(manAtlas.frames);
         this.man.setAnimationsCollection(manAtlas.actions);
-        this.man.startAnimation('moveUp');
+        this.man.startAnimation('stayDown');
         this.add(this.tank);
         this.add(this.man);
     },
@@ -40,10 +40,31 @@ const mainScene = new Scene({
             this.parent.keyboard.keys;
         this.man.velocity.x = 0;
         this.man.velocity.y = 0;
-        arrowUp && this.man.velocity.y--;
-        arrowDown && this.man.velocity.y++;
-        arrowLeft && this.man.velocity.x--;
-        arrowRight && this.man.velocity.x++;
+        if (arrowUp) {
+            this.man.velocity.y = -1.5;
+            if (this.man.animation !== 'moveUp') {
+                this.man.startAnimation('moveUp');
+            }
+        } else if (arrowDown) {
+            this.man.velocity.y = +1.5;
+            if (this.man.animation !== 'moveDown') {
+                this.man.startAnimation('moveDown');
+            }
+        } else if (arrowLeft) {
+            this.man.velocity.x = -1.5;
+            if (this.man.animation !== 'moveLeft') {
+                this.man.startAnimation('moveLeft');
+            }
+        } else if (arrowRight) {
+            this.man.velocity.x = +1.5;
+            if (this.man.animation !== 'moveRight') {
+                this.man.startAnimation('moveRight');
+            }
+        } else if (this.man.animation === 'moveDown') {
+            this.man.startAnimation('stayDown')
+        } else if (this.man.animation === 'moveUp') {
+            this.man.startAnimation('stayUp')
+        }
     },
 });
 
