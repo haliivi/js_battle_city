@@ -1,12 +1,21 @@
 {
     "actions": {
         "moveDown": {
-            "duration": 200,
+            "duration": 800,
             "frames": [
                 ["man", "down", "frame1"],
                 ["man", "down", "frame2"],
                 ["man", "down", "frame3"],
                 ["man", "down", "frame4"]
+            ]
+        },
+        "moveUp": {
+            "duration": 800,
+            "frames": [
+                ["man", "up", "frame1"],
+                ["man", "up", "frame2"],
+                ["man", "up", "frame3"],
+                ["man", "up", "frame4"]
             ]
         }
     },
@@ -36,6 +45,34 @@
             "keys": ["man", "down", "frame4"],
             "x": 268,
             "y": 22,
+            "width": 78,
+            "height": 100
+        },
+        {
+            "keys": ["man", "up", "frame1"],
+            "x": 6,
+            "y": 153,
+            "width": 78,
+            "height": 100
+        },
+        {
+            "keys": ["man", "up", "frame2"],
+            "x": 99,
+            "y": 153,
+            "width": 78,
+            "height": 100
+        },
+        {
+            "keys": ["man", "up", "frame3"],
+            "x": 181,
+            "y": 153,
+            "width": 78,
+            "height": 100
+        },
+        {
+            "keys": ["man", "up", "frame4"],
+            "x": 268,
+            "y": 153,
             "width": 78,
             "height": 100
         }

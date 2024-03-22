@@ -45,10 +45,9 @@
                 this.animation &&
                 Util.delay(this.animation + this.uid, this.frameDelay)
             ) {
-                const {frames} = this.animations[this.animation]
-                this.frameNumber =
-                    (this.frameNumber + 1) % frames.length;
-                this.setFrameByKeys(frames[this.frameNumber]);
+                const { frames } = this.animations[this.animation];
+                this.frameNumber = (this.frameNumber + 1) % frames.length;
+                this.setFrameByKeys(...frames[this.frameNumber]);
             }
             this.x += this.velocity.x;
             this.y += this.velocity.y;
@@ -61,6 +60,8 @@
             this.frame.y = frame.y;
             this.frame.width = frame.width;
             this.frame.height = frame.height;
+            this.width = this.frame.width;
+            this.height = this.frame.height;
         }
 
         getFrameByKeys(...keys) {
